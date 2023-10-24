@@ -1,9 +1,9 @@
 from pathlib import Path
 from binance import Client
 from sqlalchemy import create_engine, inspect
-from pandas import DataFrame, to_datetime
 from os import environ
 environ['OPENBLAS_NUM_THREADS'] = '1'
+from pandas import DataFrame, to_datetime
 import env
 from progress.bar import IncrementalBar
 
@@ -93,24 +93,24 @@ class Setup:
                 name=self.CONFIG_TABLE,
                 con=connection,
                 if_exists='replace',
-                index_label='id'
+                index=False
             )
             _data['price_data']['days'].to_sql(
                 name=self.PRICES_DAYS,
                 con=connection,
                 if_exists='replace',
-                index_label='id'
+                index=False
             )
             _data['price_data']['hours'].to_sql(
                 name=self.PRICES_HOURS,
                 con=connection,
                 if_exists='replace',
-                index_label='id'
+                index=False
             )
             _data['price_data']['minutes'].to_sql(
                 name=self.PRICES_MINUTES,
                 con=connection,
                 if_exists='replace',
-                index_label='id'
+                index=False
             )
             connection.commit()
