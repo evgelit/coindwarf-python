@@ -50,6 +50,6 @@ class Analyze:
                 .where(prices.diff() < 0, 0.0)
                 .tail(period).mean())
         if loss == 0:
-            loss = 1
+            return 100.00
         rs = gain / loss
         return round(100 - (100 / (1 + rs)), 2)
